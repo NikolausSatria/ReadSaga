@@ -54,9 +54,9 @@ class BookListAdapter(val bookList: ArrayList<Books>): RecyclerView.Adapter<Book
         }
     }
 
-    fun updateBookList(newHobbyList:ArrayList<Books>) {
+    fun updateBookList(newBookList:ArrayList<Books>) {
         bookList.clear()
-        bookList.addAll(newHobbyList)
+        bookList.addAll(newBookList)
         notifyDataSetChanged()
     }
 }

@@ -9,8 +9,8 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.readsaga.model.Books
+//import com.example.readsaga.model.Paragraphs
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import org.json.JSONObject
 
 class BookDetailViewModel(application: Application): AndroidViewModel(application) {
@@ -22,10 +22,10 @@ class BookDetailViewModel(application: Application): AndroidViewModel(applicatio
     private var queue: RequestQueue? = null
     fun getDetails(id:String){
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/readsaga/book_detail.php?id=$id"
+        val bookUrl = "http://10.0.2.2/readsaga/book_detail.php?id=$id"
 
-        val stringRequest = StringRequest(
-            Request.Method.GET, url, {
+        val bookRequest = StringRequest(
+            Request.Method.GET, bookUrl, {
                 val jsonObject = JSONObject(it)
                 val dataArray = jsonObject.getJSONArray("data")
                 if (dataArray.length() > 0) {
@@ -34,15 +34,15 @@ class BookDetailViewModel(application: Application): AndroidViewModel(applicatio
                     bookDetailLD.value = result
                     loadingLD.value = false
                 }
-                Log.d("Success", it)
+                Log.d("BookDetailViewModel: get book success", it)
             }, {
                 Log.d("Error", it.toString())
-                bookLoadErrorLD.value = false
+                bookLoadErrorLD.value = true
                 loadingLD.value = false
             }
         )
-        stringRequest.tag = TAG
-        queue?.add(stringRequest)
+        bookRequest.tag = TAG
+        queue?.add(bookRequest)
     }
 
     override fun onCleared() {

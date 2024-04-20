@@ -1,18 +1,22 @@
 package com.example.readsaga.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.readsaga.R
 import com.example.readsaga.databinding.FragmentLoginBinding
 import com.example.readsaga.viewmodel.UserViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class LoginFragment : Fragment() {
@@ -30,29 +34,17 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         binding.btnLogin.setOnClickListener {
             val username = "niko"
             val password = "123"
-//            val username = binding.txtUsername.text.toString()
-//            val password = binding.txtPassword.text.toString()
-            viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-            viewModel.login(username, password)
-
-            viewModel.userLD.observe(viewLifecycleOwner, Observer {
-                val userLogin = it
-                if (userLogin != null){
-                    val action = LoginFragmentDirections.actionBookList()
-                    Navigation.findNavController(view).navigate(action)
-                }
-            })
+//            val username = binding.txtUsername.text
+//            val password = binding.txtPassword.text
+            viewModel.login(username.toString(), password.toString(), it)
         }
-
         binding.btnRegister.setOnClickListener {
             val action = LoginFragmentDirections.actionRegister()
             Navigation.findNavController(view).navigate(action)
         }
-
     }
-
 }

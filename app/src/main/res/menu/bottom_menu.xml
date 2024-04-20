@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/itemHome"
+        android:id="@+id/bookListFragment"
         android:icon="@drawable/baseline_home_24"
         android:title="Home"
         android:visible="true"

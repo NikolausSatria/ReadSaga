@@ -45,23 +45,6 @@ class BookViewModel(application: Application): AndroidViewModel(application) {
         queue?.add(stringRequest)
     }
 
-    fun getDetail(id:String){
-        queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/readsaga/book_detail.php?id=$id"
-
-        val stringRequest = StringRequest(
-            Request.Method.GET, url, {
-                bookDetailLD.value = Gson().fromJson(it, Books::class.java)
-
-                Log.d("Success", it)
-            }, {
-                Log.d("Error", it.toString())
-            }
-        )
-        stringRequest.tag = TAG
-        queue?.add(stringRequest)
-    }
-
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)

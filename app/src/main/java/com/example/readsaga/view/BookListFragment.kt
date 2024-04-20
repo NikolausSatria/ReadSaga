@@ -12,6 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.readsaga.R
 import com.example.readsaga.databinding.FragmentBookListBinding
 import com.example.readsaga.viewmodel.BookViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BookListFragment : Fragment() {
     private lateinit var binding: FragmentBookListBinding
@@ -28,9 +29,11 @@ class BookListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel = ViewModelProvider(this).get(BookViewModel::class.java)
         viewModel.fetch()
 
+        (activity as MainActivity).userId =BookListFragmentArgs.fromBundle(requireArguments()).userId
         binding.recView.layoutManager = LinearLayoutManager(context)
         binding.recView.adapter = bookListAdapter
 

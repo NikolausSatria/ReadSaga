@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.example.readsaga.R
 import com.example.readsaga.databinding.FragmentRegisterBinding
 import com.example.readsaga.viewmodel.UserViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class RegisterFragment : Fragment() {
     private lateinit var viewModel: UserViewModel
@@ -28,6 +29,7 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btnCreate.setOnClickListener { view->
             val email = binding.txtEmail.text.toString()
             val username = binding.txtUsername.text.toString()
