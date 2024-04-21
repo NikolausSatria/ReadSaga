@@ -52,8 +52,12 @@ class ProfileFragment : Fragment() {
             val firstName = binding.txtFirstNameProfile.text
             val lastName = binding.txtLastNameProfile.text
             val oldPass = binding.txtOldPassword.text
-            val newPass = binding.txtNewPassword.text
+            var newPass = binding.txtNewPassword.text
             val urlPhoto = binding.txtImageUrlProfile.text
+
+            if (newPass.isNullOrEmpty()){
+                newPass = oldPass
+            }
 
             viewModel.updateUserProfile(userId, firstName.toString(), lastName.toString(), oldPass.toString(), newPass.toString(), urlPhoto.toString())
             viewModel.getUserProfile(userId)
