@@ -20,11 +20,18 @@ data class User(
 )
 
 data class Books(
+    @SerializedName("id")
     val id: String?,
+    @SerializedName("title")
     val title: String?,
+    @SerializedName("image")
     val image: String?,
+    @SerializedName("description")
     val description: String?,
+    @SerializedName("comment")
     var comment: String?,
+    @SerializedName("author")
     val author: String?,
+    @SerializedName("sender")
     val sender: String?
 )

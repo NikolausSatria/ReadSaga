@@ -36,10 +36,10 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         binding.btnLogin.setOnClickListener {
-            val username = "niko"
-            val password = "123"
-//            val username = binding.txtUsername.text
-//            val password = binding.txtPassword.text
+//            val username = "niko"
+//            val password = "123"
+            val username = binding.txtUsername.text
+            val password = binding.txtPassword.text
             viewModel.login(username.toString(), password.toString(), it)
         }
         binding.btnRegister.setOnClickListener {

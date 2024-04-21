@@ -1,6 +1,7 @@
 package com.example.readsaga.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,10 +34,12 @@ class BookListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(BookViewModel::class.java)
         viewModel.fetch()
 
-        (activity as MainActivity).userId =BookListFragmentArgs.fromBundle(requireArguments()).userId
+
+        (activity as MainActivity).userId = BookListFragmentArgs.fromBundle(requireArguments()).userId
         binding.recView.layoutManager = LinearLayoutManager(context)
         binding.recView.adapter = bookListAdapter
 
+        Log.d("CEK USERID", (activity as MainActivity).userId)
         val swipe = view.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
         swipe.setOnRefreshListener {
             viewModel.fetch()

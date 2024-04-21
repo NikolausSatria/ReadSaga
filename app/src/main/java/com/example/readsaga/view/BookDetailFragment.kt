@@ -36,6 +36,10 @@ class BookDetailFragment : Fragment() {
             val book = BookDetailFragmentArgs.fromBundle(requireArguments()).id
             viewModel = ViewModelProvider(this).get(BookDetailViewModel::class.java)
             viewModel.getDetails(book)
+
+            viewModel.addHistory(book, (activity as MainActivity).userId)
+            Log.d("BDF", (activity as MainActivity).userId)
+            Log.d("BOOK", book)
             observeViewModel()
         }
     }
@@ -55,7 +59,7 @@ class BookDetailFragment : Fragment() {
                 }
                 picasso?.build()?.load(viewModel.bookDetailLD.value?.image)?.into(binding.imageViewBookDetail)
 
-                val comment = book.comment?.split("\r\n")?.toTypedArray()
+                val comment = book.comment?.split("\n")?.toTypedArray()
                 binding.txtCommentDetail.text = comment?.get(commentIndex).toString()
 
                 binding.btnPrev.visibility = View.GONE

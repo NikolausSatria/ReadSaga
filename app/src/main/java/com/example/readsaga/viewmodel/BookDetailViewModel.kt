@@ -11,6 +11,7 @@ import com.android.volley.toolbox.Volley
 import com.example.readsaga.model.Books
 //import com.example.readsaga.model.Paragraphs
 import com.google.gson.Gson
+import org.json.JSONException
 import org.json.JSONObject
 
 class BookDetailViewModel(application: Application): AndroidViewModel(application) {
@@ -43,6 +44,36 @@ class BookDetailViewModel(application: Application): AndroidViewModel(applicatio
         )
         bookRequest.tag = TAG
         queue?.add(bookRequest)
+    }
+
+    fun addHistory(bookId: String, userId: String) {
+        val url = "http://10.0.2.2/readsaga/add_read_history.php"
+        val stringRequest = object : StringRequest(
+            Method.POST, url, { response->
+                try {
+//                    val obj = JSONObject(response)
+//                    if (obj.getString("Result") == "Success") {
+//                        Log.d("Add History", "History added")
+//                    } else {
+//                        Log.e("Add History", "Failed to add history")
+//                    }
+                } catch (e: JSONException) {
+                    Log.e("JSON Error", "Error parsing JSON", e)
+                }
+            },
+            {
+                loadingLD.value = false
+                Log.d("load error", it.toString())
+            }) {
+            override fun getParams(): Map<String, String> {
+                val params = HashMap<String, String>()
+                params["book_id"] = bookId
+                params["user_id"] = userId
+                return params
+            }
+        }
+        stringRequest.tag = TAG
+        queue?.add(stringRequest)
     }
 
     override fun onCleared() {

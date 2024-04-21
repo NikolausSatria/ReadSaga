@@ -40,7 +40,12 @@ class ProfileFragment : Fragment() {
             binding.txtFirstNameProfile.setText(user?.first_name)
             binding.txtLastNameProfile.setText(user?.last_name)
             binding.txtImageUrlProfile.setText(user?.url_photo)
-            Picasso.get().load(user?.url_photo).into(binding.imageViewProfile)
+//            Picasso.get().load(user?.url_photo).into(binding.imageViewProfile)
+            if (!user?.url_photo.isNullOrEmpty()) {
+                Picasso.get().load(user?.url_photo).into(binding.imageViewProfile)
+            } else {
+                Picasso.get().load(R.drawable.baseline_person_24).into(binding.imageViewProfile)
+            }
         })
 
         binding.btnUpdate.setOnClickListener {

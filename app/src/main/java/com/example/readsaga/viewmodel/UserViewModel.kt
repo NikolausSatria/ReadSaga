@@ -14,6 +14,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.readsaga.model.User
 import com.example.readsaga.view.LoginFragmentDirections
+import com.example.readsaga.view.MainActivity
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken

@@ -7,8 +7,8 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.readsaga.view.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/actionBookListFragment"
             app:destination="@id/bookListFragment" />
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/bookListFragment"
         android:name="com.example.readsaga.view.BookListFragment"
-        android:label="fragment_book_list"
+        android:label="Book List"
         tools:layout="@layout/fragment_book_list">
         <action
             android:id="@+id/actionBookDetailFragment"
@@ -31,8 +31,8 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.readsaga.view.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/actionLogin"
             app:destination="@id/loginFragment" />
@@ -40,8 +40,8 @@
     <fragment
         android:id="@+id/bookDetailFragment"
         android:name="com.example.readsaga.view.BookDetailFragment"
-        android:label="fragment_book_detail"
-        tools:layout="@layout/fragment_book_detail" >
+        android:label="Book Detail"
+        tools:layout="@layout/fragment_book_detail">
         <argument
             android:name="id"
             app:argType="string" />
@@ -52,13 +52,17 @@
     <fragment
         android:id="@+id/itemHistory"
         android:name="com.example.readsaga.view.HistoryFragment"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        android:label="History"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/actionBookDetailFragment"
+            app:destination="@id/bookDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemProfile"
         android:name="com.example.readsaga.view.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/actionLoginFragment"
             app:destination="@id/loginFragment" />
