@@ -50,6 +50,7 @@
                 android:id="@+id/txtUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/aleo"
                 android:hint="Username" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -79,6 +80,7 @@
                 android:id="@+id/txtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/aleo"
                 android:hint="Password"
                 android:password="true" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -91,6 +93,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="50dp"
             android:backgroundTint="#000000"
+            android:fontFamily="@font/aleo"
             android:text="Login"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -106,6 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="90dp"
             android:layout_marginTop="44dp"
+            android:fontFamily="@font/aleo"
             android:text="Don't have an account?"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
@@ -117,8 +121,9 @@
             android:layout_height="56dp"
             android:layout_marginStart="-10dp"
             android:layout_marginTop="26dp"
+            android:fontFamily="@font/aleo"
             android:text="Register"
-            android:textColor="#000000"
+            android:textColor="#3F51B5"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/btnLogin" />

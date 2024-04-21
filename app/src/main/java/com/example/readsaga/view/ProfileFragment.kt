@@ -56,6 +56,9 @@ class ProfileFragment : Fragment() {
             val urlPhoto = binding.txtImageUrlProfile.text
 
             viewModel.updateUserProfile(userId, firstName.toString(), lastName.toString(), oldPass.toString(), newPass.toString(), urlPhoto.toString())
+            viewModel.getUserProfile(userId)
+            binding.txtOldPassword.text.clear()
+            binding.txtNewPassword.text.clear()
         }
 
         binding.btnLogOut.setOnClickListener {
